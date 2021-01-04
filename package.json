@@ -5,13 +5,15 @@
   "license": "MIT",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
   "scripts": {
-    "dev": "nodemon server/server.js",
-    "build": "webpack --mode production"
+    "webpack:start": "nodemon --watch dist --exec node dist/index_bundle.js",
+    "webpack:build": "webpack --mode production --watch",
+    "dev": "npm-run-all --parallel webpack:*"
   },
   "devDependencies": {
     "@babel/core": "7.10.4",
@@ -20,6 +22,7 @@
     "babel-loader": "8.1.0",
     "html-webpack-plugin": "^4.5.1",
     "nodemon": "^2.0.6",
+    "npm-run-all": "^4.1.5",
     "webpack": "4.42.0",
     "webpack-cli": "3.3.12",
     "webpack-dev-server": "^3.11.1",
