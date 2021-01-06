@@ -3,14 +3,15 @@ const webpackNodeExternals = require('webpack-node-externals'); // ** Ignore /no
 
 module.exports = {
     target: 'node',
-    entry: './server/server.js',
+    entry: './server.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: "index_bundle.js"
+        filename: "server_bundle.js"
     },
     module: {
         rules: [
-            { test: /\.js$/, exclude: '/node_modules/', loader: "babel-loader" }
+            { test: /\.js$/, exclude: '/node_modules/', loader: "babel-loader" }, 
+            { test: /\.css$/, loader: 'ignore-loader' }
         ]
     },
     externals: [webpackNodeExternals()]

@@ -1,7 +1,12 @@
 import React from 'react'; 
+import { HomePage } from './views/homePageView/'; 
+import { Switch, Route } from 'react-router'; 
+
 
 export const App = () => {
     return(
-        <div>Server Rendered App</div>
+        <Switch>
+            <Route path="/" render={() => <HomePage />}/> 
+        </Switch>        
     )
 }
