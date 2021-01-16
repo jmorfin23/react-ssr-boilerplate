@@ -1,6 +1,6 @@
 import React from 'react'; 
 
-export const SampleComponent = () => {
+export default () => {
     return(
         <div>Sample Component</div>
     )

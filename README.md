@@ -1,4 +1,4 @@
-## Server Side Rendered React Boilerplate w/ React-Helmet-async 
+## Server Side Rendered React Boilerplate w/ React-Helmet-async / @loadable/components
 
 ## Clone the project:
 
