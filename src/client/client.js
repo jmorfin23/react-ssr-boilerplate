@@ -9,6 +9,7 @@ import reducers from './reducers';
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'; 
 import { Provider } from 'react-redux';
+import { renderRoutes } from "react-router-config"
 
 // Grab the state from a global variable injected into the server-generated HTML
 const preloadedState = window.__PRELOADED_STATE__
@@ -25,7 +26,7 @@ loadableReady(() => {
             <Provider store={store}>
                 <HelmetProvider>
                     <BrowserRouter>
-                        <Routes /> 
+                        <div>{renderRoutes(Routes)}</div>
                     </BrowserRouter>
                 </HelmetProvider>
             </Provider>

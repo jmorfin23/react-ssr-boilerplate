@@ -8,8 +8,6 @@ import { connect } from 'react-redux';
 import { increment, decrement } from '../../actions/actions'; 
 
 const HomePage = (props) => {
-    console.log('homepage')
-    console.log(props)
     return(
         <div className="homepage">
             <Helmet>
@@ -27,3 +25,7 @@ const HomePage = (props) => {
 const mapStateToProps = ({ counter }) => ({ counter }); 
 
 export default connect(mapStateToProps, { increment, decrement })(HomePage); 
+
+
+
+

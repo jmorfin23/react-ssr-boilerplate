@@ -1,0 +1,23 @@
+.error-message {
+    text-align: center;
+    margin: 60px;
+  }
+  .error-code {
+    color: #c5d2d9;
+    margin: 5px;
+    opacity: 0.75;
+    font-size: 125px;
+  }
+  
+  .error-description {
+    color: #738a94;
+    font-size: 25px;
+  }
+  
+  .error-link {
+    color: #e26091;
+  }
+  
+  .error-link:hover {
+    text-decoration: underline;
+  }

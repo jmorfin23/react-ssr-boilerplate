@@ -6,24 +6,25 @@ import { HelmetProvider } from 'react-helmet-async'
 import { StaticRouter } from 'react-router'; 
 import { ChunkExtractor } from '@loadable/server'
 import { Provider } from 'react-redux'; 
+import { renderRoutes } from 'react-router-config'; 
 import path from 'path';
 
-export default (req, store) => {
+export default (req, store, context) => {
 // Context used to handle some redirects 
-const context = {}; 
+
 const helmetContext = {}; 
 
 const statsFile = path.resolve('./dist/public/loadable-stats.json');
 
 const webextractor = new ChunkExtractor({ statsFile }); 
 
-const app = webextractor.collectChunks(<Routes />); 
+const app = webextractor.collectChunks(renderRoutes(Routes)); 
 
 const component = ReactDOMServer.renderToString(
     <Provider store={store}>
       <StaticRouter location={req.url} context={context}>
         <HelmetProvider context={helmetContext}>
-          {app}
+          <div>{app}</div>
         </HelmetProvider>
       </StaticRouter> 
     </Provider>

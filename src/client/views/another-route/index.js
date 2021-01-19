@@ -6,16 +6,11 @@ export default () => {
     return(
         <div className="aboutpage">
             <Helmet>
-                <title>About Page</title>
+                <title>another</title>
             </Helmet>
-            <h1>About page </h1>
-            <Link to="/">go to home page</Link>
-            <p>balksjdf;ajsd;klfja;lsdkfja</p>
+            <h1>another page </h1>
             <button type="button" onClick={() => console.log('testing..')}>Press Me!</button>
         </div>
     )
-}; 
 
-
-    
-
+}
