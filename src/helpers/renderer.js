@@ -34,9 +34,11 @@ const component = ReactDOMServer.renderToString(
 // load before your polyfill. To avoid this issue, disable async bypassing { async: false }
 const scriptTags = webextractor.getScriptTags({ async: false }) 
 
+const styleTags = webextractor.getStyleTags(); 
+
 const { helmet } = helmetContext; 
 
 const preloadedState = store.getState(); 
 
-return `<!DOCTYPE html>${HTMLTemplate(component, helmet, scriptTags, preloadedState)}`; 
+return `<!DOCTYPE html>${HTMLTemplate(component, helmet, scriptTags, preloadedState, styleTags)}`; 
 }; 
