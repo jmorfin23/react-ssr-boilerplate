@@ -3,14 +3,18 @@ const LoadablePlugin = require('@loadable/webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
+const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
+    mode: isProd ? 'production' : 'development', 
     entry: './src/client/client.js',
     output: {
         path: path.resolve(__dirname, 'dist/public'),
-        filename: "[name]_bundle.js",
-        chunkFilename: "[name]_bundle.js", 
+        filename: isProd ? "[name].[contentHash].bundle.js": "[name].bundle.js",
+        chunkFilename: isProd ? "[name].[contentHash].bundle.js": "[name].bundle.js", 
     },
     module: {
         rules: [
@@ -27,7 +31,9 @@ module.exports = {
               chunks: "all"
             }
           }
-        }
+        }, 
+        minimize: true,
+        minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
       },
       plugins: [
         new LoadablePlugin(), 
@@ -36,6 +42,6 @@ module.exports = {
             filename: '[name].css',
             chunkFilename: '[id].css',
           }),
-        new BundleAnalyzerPlugin()
+        new BundleAnalyzerPlugin(), 
     ]
 }
